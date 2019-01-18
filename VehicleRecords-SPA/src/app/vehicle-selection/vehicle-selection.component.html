@@ -1,0 +1,111 @@
+<mat-card style="background-color: lightyellow">
+  <mat-card-title> Vehicle Search Engine </mat-card-title>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Make" [(ngModel)]="makeValue" (ngModelChange)="handleMakeChange()">
+          <mat-option *ngFor="let make of makes" [value]="make">
+            {{ make }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Year" [(ngModel)]="yearValue">
+          <mat-option *ngFor="let year of years" [value]="year">
+            {{ year }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Model" [(ngModel)]="modelValue" (ngModelChange)="handleModelChange()">
+          <mat-option *ngFor="let model of models" [value]="model">
+            {{ model }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Color" [(ngModel)]="colorValue">
+          <mat-option *ngFor="let color of colors" [value]="color">
+            {{ color }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Miles" [(ngModel)]="miles" />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-success btn-sm" (click)="clearFilters()">Clear</button>
+    </div>
+  </div>
+</mat-card>
+
+<div fxLayout="row">
+  <div fxFlex="100">
+      <mat-table mat-table [dataSource]="vehicleRecords" class="mat-elevation-z8">
+        
+          <!-- Id Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          </ng-container>
+        
+          <!-- Year Column -->
+          <ng-container matColumnDef="year">
+            <mat-header-cell *matHeaderCellDef> Year </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.year}} </mat-cell>
+          </ng-container>
+        
+          <!-- Make Column -->
+          <ng-container matColumnDef="make">
+            <mat-header-cell *matHeaderCellDef> Make </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.make}} </mat-cell>
+          </ng-container>
+      
+          <!-- Model Column -->
+          <ng-container matColumnDef="model">
+              <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+            </ng-container>
+          
+            <!-- Color Column -->
+            <ng-container matColumnDef="color">
+              <mat-header-cell *matHeaderCellDef> Color </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.color}} </mat-cell>
+            </ng-container>
+          
+            <!-- Miles Column -->
+            <ng-container matColumnDef="miles">
+              <mat-header-cell *matHeaderCellDef> Miles </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.miles}} </mat-cell>
+            </ng-container>
+          
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+            </ng-container>
+        
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+  </div>
+
+</div>
+
+

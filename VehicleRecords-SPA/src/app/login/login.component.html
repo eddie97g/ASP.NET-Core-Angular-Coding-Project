@@ -1,0 +1,41 @@
+<!-- <body class="text-center" data-gr-c-s-loaded="true"> -->
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div>
+    <form #loginForm="ngForm" class="form-signin" (ngSubmit)="login()">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputUsername" class="sr-only">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="inputUsername"
+        class="form-control"
+        placeholder="Username"
+        required
+        [(ngModel)]="model.username"
+        autofocus=""
+      />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+        [(ngModel)]="model.password"
+      />
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" /> Remember me
+        </label>
+      </div>
+      <button [disabled]="!loginForm.valid" class="btn btn-lg btn-primary btn-block" type="submit">
+        Sign in
+      </button>
+      
+    </form>
+  </div>
+</div>
+
+<!-- </body> -->
